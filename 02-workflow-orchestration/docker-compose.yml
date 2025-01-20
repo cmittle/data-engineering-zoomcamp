@@ -4,6 +4,10 @@ volumes:
   kestra-data:
     driver: local
 
+#networks:
+#  shared-network:
+#    external: true
+
 services:
   postgres:
     image: postgres
@@ -13,11 +17,25 @@ services:
       POSTGRES_DB: kestra
       POSTGRES_USER: kestra
       POSTGRES_PASSWORD: k3str4
+    ports:
+      - "5432:5432"
+#    container_name: postgres-zoomcamp
+#    networks:
+#      - shared-network
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
       interval: 30s
       timeout: 10s
       retries: 10
+#  pgadmin:
+#    image: dpage/pgadmin4
+#    environment:
+#      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+#      - PGADMIN_DEFAULT_PASSWORD=root
+#    ports:
+#      - "3000:80"
+#    networks:
+#      - shared-network
 
   kestra:
     image: kestra/kestra:latest
