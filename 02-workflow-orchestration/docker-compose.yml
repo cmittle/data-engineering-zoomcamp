@@ -1,15 +1,15 @@
 
 networks:
-network1:
-  name: zoomcamp-network
-  driver: bridge
-  attachable: true
-  # ipam:
-  #   driver: default
-  #   config:
-  #     - subnet: 172.18.0.0/16
-  #       ip_range: 172.18.5.0/24
-  #       gateway: 172.18.0.1
+  network1:
+    name: zoomcamp-network
+    driver: bridge
+    attachable: true
+    # ipam:
+    #   driver: default
+    #   config:
+    #     - subnet: 172.18.0.0/16
+    #       ip_range: 172.18.5.0/24
+    #       gateway: 172.18.0.1
 
 volumes:
   postgres-data:
@@ -35,6 +35,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 10
+    networks:
+      - network1
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -56,6 +58,8 @@ services:
       timeout: 10s
       retries: 5
     restart: on-failure:5
+    networks:
+      - network1
   
 #Using this line from below jdbc:postgresql://postgres:5432/kestra from kestra docker config
 #modify it to jdbc:postgresql://postgres:5431/postgres  ==> This is the line that needs to be in the pluginDefaults url value in the kestra flow 
@@ -104,3 +108,5 @@ services:
     depends_on:
       postgres:
         condition: service_started
+    networks:
+      - network1
