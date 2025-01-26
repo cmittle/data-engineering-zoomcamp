@@ -67,6 +67,9 @@ services:
 #postgres is from the name of the database i already found here.. I don't know 100% where it came from
 #but I don't think it's defined above.
 
+#had to update kestra flow to use db name postgres
+#and had to find docker internal redirect ip 172.17.0.1 and use that in kestra file rather than localhost/docker.internal.host
+
   kestra:
     image: kestra/kestra:latest
     pull_policy: always
