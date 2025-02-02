@@ -71,5 +71,7 @@
         Add a timezone property set to UTC-5 in the Schedule trigger configuration
         Add a location property set to New_York in the Schedule trigger configuration
    ### Solution:
+        Per Kestra documentation here: https://kestra.io/docs/workflow-components/triggers/schedule-trigger
+        adding a timezone to the trigger of America/New_York is the answer
 
 
