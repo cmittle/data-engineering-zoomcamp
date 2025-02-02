@@ -16,6 +16,15 @@
         green_tripdata_04_2020.csv
         green_tripdata_2020.csv
    ### Solution:
+        In Kestra inspect the code editor of flow 06_gcp_taxi and find this line:
+        data: "{{outputs.extract.outputFiles[inputs.taxi ~ '_tripdata_' ~ inputs.year ~ '-' ~ inputs.month ~ '.csv']}}"
+        This shows that the format flows in this order: 
+                [color] 
+                hard coded "_tripdata_" 
+                [year] 
+                hard coded "-" *Dash not underscore
+                [month]
+                This would result in "green_tripdata_2020-04.csv" as a rednered file name
 
 ## Question 3: How many rows are there for the Yellow Taxi data for all CSV files in the year 2020?
         13,537.299
