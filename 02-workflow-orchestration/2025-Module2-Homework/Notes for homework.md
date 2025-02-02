@@ -7,7 +7,8 @@
         692.6 MB
 
    ### Solution:  
-       In Kestra open flow 06_gcp_taxi and in purge task change disabled to true so the file is kept. run for yellow on year 2020 and month 12. Look at output file and see that it is size 128.3 MB
+       In Kestra open flow 06_gcp_taxi and in purge task change disabled to true so the file is kept. 
+       Run for yellow on year 2020 and month 12. Look at output file and see that it is size 128.3 MB
 
 ## Question 2: What is the rendered value of the variable file when the inputs taxi is set to green, year is set to 2020, and month is set to 04 during execution?
         {{inputs.taxi}}_tripdata_{{inputs.year}}-{{inputs.month}}.csv
