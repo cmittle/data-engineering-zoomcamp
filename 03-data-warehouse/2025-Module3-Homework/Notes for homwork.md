@@ -24,8 +24,12 @@ Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (
 ## Solution Steps:
 1. from terminal cd to 02-workflow-orchestration folder
 2. docker compose up to launch kestra orechestrator
-3. create new flow 10_week3_homework and start copying in sections from 07_gcp_dbt
-4. 
+3. create new flow 10_week3_homework and start copying in sections from 06_gcp_taxi
+4. overhaul these sections
+  a. bucket name, file name, file extension, etc... all need to change
+  b. I keep getting errors trying to use kestra for this. Primarily that wget failes with exit code 4. Even after a 2 minut download / run time
+5. Abort and manually download parquet files and upload to GCP bucket :(
+6. 
 
 
 
