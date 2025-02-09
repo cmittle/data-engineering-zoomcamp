@@ -1,4 +1,36 @@
 # Module 3 Homework for data warehouse
+## Important Note:
+For this homework we will be using the Yellow Taxi Trip Records for January 2024 - June 2024 NOT the entire year of data Parquet Files from the New York City Taxi Data found here:
+https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+If you are using orchestration such as Kestra, Mage, Airflow or Prefect etc. do not load the data into Big Query using the orchestrator.
+Stop with loading the files into a bucket.
+
+
+## Load Script: 
+You can manually download the parquet files and upload them to your GCS Bucket or you can use the linked script here:
+You will simply need to generate a Service Account with GCS Admin Priveleges or be authenticated with the Google SDK and update the bucket name in the script to the name of your bucket
+Nothing is fool proof so make sure that all 6 files show in your GCS Bucket before begining.
+
+
+## NOTE: You will need to use the PARQUET option files when creating an External Table
+
+## BIG QUERY SETUP:
+Create an external table using the Yellow Taxi Trip Records.
+Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (do not partition or cluster this table).
+
+## solution planning
+1. use Kestra to orchestrate uploading to bucket as we alrady did this and it should just require some tweaking of bucket names, and file location
+
+## Solution Steps:
+1. from terminal cd to 02-workflow-orchestration folder
+2. docker compose up to launch kestra orechestrator
+3. create new flow 10_week3_homework and start copying in sections from 07_gcp_dbt
+4. 
+
+
+
+
+
 
 ## Question 1: Question 1: What is count of records for the 2024 Yellow Taxi Data?
         65,623
