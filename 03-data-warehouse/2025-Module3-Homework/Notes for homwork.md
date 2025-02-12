@@ -31,10 +31,8 @@ Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (
 5. Abort and manually download parquet files and upload to GCP bucket :(
         Right after manually uploading I found a thread on slack that helped me solve this. I now have
         Kestra doing all 6 uploads. I had to add a 'create bucket' task in the kestra flow as well
-6. 
-
-
-
+        I kept running in to region conflicts on BigQuery so i revised this kestra flow to create the bucket in region us-central1
+        
 
 
 
