@@ -43,18 +43,25 @@ Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (
 ## Question 1: Question 1: What is count of records for the 2024 Yellow Taxi Data?
         65,623
         840,402
-        20,332,093
+        * 20,332,093
         85,431,289
         
    ### Solution:
+  After uploading files via kestra to bucket, and using BQ to compile in to external table, then convert to internal table I was finally able to run:
+        SELECT COUNT(*) FROM `kestra-sandbox-449103.week3_homework.yellow_2024_main_table`
+  and get the answer of 20332093
 
 ## Question 2: Write a query to count the distinct number of PULocationIDs for the entire dataset on both the tables.
 What is the estimated amount of data that will be read when this query is executed on the External Table and the Table?
         18.82 MB for the External Table and 47.60 MB for the Materialized Table
-        0 MB for the External Table and 155.12 MB for the Materialized Table
+        * 0 MB for the External Table and 155.12 MB for the Materialized Table
         2.14 GB for the External Table and 0MB for the Materialized Table
         0 MB for the External Table and 0MB for the Materialized Table
    ### Solution:
+        Query 1: SELECT DISTINCT PULocationID FROM `kestra-sandbox-449103.week3_homework.external_yellow-trip-2024-h1v2` estimated 0B
+        Query 2: SELECT DISTINCT PULocationID FROM `kestra-sandbox-449103.week3_homework.yellow_2024_main_table`  estimated 155.12MB
+        
+
 
 ## Question 3: Write a query to retrieve the PULocationID from the table (not the external table) in BigQuery. Now write a query to retrieve the PULocationID and DOLocationID on the same table. Why are the estimated number of Bytes different?
         BigQuery is a columnar database, and it only scans the specific columns requested in the query. Querying two columns (PULocationID, DOLocationID) requires reading more data than querying one column (PULocationID), leading to a higher estimated number of bytes processed.
@@ -63,6 +70,8 @@ What is the estimated amount of data that will be read when this query is execut
         When selecting multiple columns, BigQuery performs an implicit join operation between them, increasing the estimated bytes processed
 
    ### Solution:
+        Query 1: SELECT PULocationID FROM `kestra-sandbox-449103.week3_homework.yellow_2024_main_table` estimated: 155.12MB processed: 155.12 billed: 156
+        Query 2: SELECT PULocationID, DOLocationID FROM `kestra-sandbox-449103.week3_homework.yellow_2024_main_table` estimated 310.24MB processed: 310.24MB billed: 311
 
 ## Question 4: How many records have a fare_amount of 0?
         128,210
