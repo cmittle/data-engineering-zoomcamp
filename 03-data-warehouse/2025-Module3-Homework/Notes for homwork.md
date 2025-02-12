@@ -32,7 +32,11 @@ Create a (regular/materialized) table in BQ using the Yellow Taxi Trip Records (
         Right after manually uploading I found a thread on slack that helped me solve this. I now have
         Kestra doing all 6 uploads. I had to add a 'create bucket' task in the kestra flow as well
         I kept running in to region conflicts on BigQuery so i revised this kestra flow to create the bucket in region us-central1
-        
+        I revised the key values in the namespace for the location to be us-central1, re-run and tested, and now new table creation works and doesn't thow the location error
+6. I rerun all of the uploads month 1-6 for yellow_taxidata_2024 in kestra and restarted bigquery steps
+7. Create 'external table' with all 6 months of data from bucket.
+8. create 'internal table' from this external table
+        The internal table allows for inspection (row count, preview, etc...)
 
 
 
